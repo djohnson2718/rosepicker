@@ -5,7 +5,7 @@ Buttons
 	*roseButton
 		name:Pluck a petal
 		on click:yield 1 petal
-		icon:/pics/rose.jpg
+		icon:https://raw.githubusercontent.com/djohnson2718/rosepicker/main/pics/rose.jpg
  
 Resources
 	*petal|petals
