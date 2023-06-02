@@ -1,0 +1,13 @@
+Let's make a game!
+	name:Rose Picker
+ 
+Buttons
+	*roseButton
+		name:Pluck a petal
+		on click:yield 1 petal
+		icon:
+ 
+Resources
+	*petal|petals
+		name:Petal|Petals
+		show earned
