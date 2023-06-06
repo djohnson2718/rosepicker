@@ -1,12 +1,157 @@
 Let's make a game!
 	name:Rose Picker
- 
+
 Buttons
 	*roseButton
 		name:Pluck a petal!
 		on click:yield 1 petal
-		icon:https://www.thespruce.com/thmb/tWd6xhd1BcllwqkZxd9RkmWqQkc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/types-of-roses-4069722-hero-17f5468ab53b4622b27e3d96534105db.jpg
+		icon:https://raw.githubusercontent.com/djohnson2718/rosepicker/main/pics/rose.jpg
+		class:bigButton hasFlares
+		tag:red
+
+	*blueRoseButton
+		name:Pluck an azure petal!
+		on click:get 1 apetal
+		icon:https://raw.githubusercontent.com/djohnson2718/rosepicker/main/pics/bluerose.jpg
+		class:extrarose hasFlares
+		tag:blue
+		hidden
+
+	*cheat
+		name:Cheat button for testing.
+		on click:get 1000 petals
+
+	*cheatDew
+		name:Cheat button for dew drops
+		on click:get 10 drops
+
+CSS
+  .thing-icon,.particle
+  {
+    width:64px;
+    height:64px;
+  }
+ 	
+	
+
 Resources
 	*petal|petals
 		name:Petal|Petals
 		show earned
+	*drop|drops
+		name:Dew drop|Dew drops
+		show earned
+	*apetal|apetal
+		name:Azure petal|Azure petals
+		show earned
+
+Buildings
+	*beetle|beetles
+	name:Beetle|Beetles
+	desc:He crawls on the rose and eats petal off every 20 seconds.
+	on tick:yield 0.05 petals
+	cost:1 petal
+
+	*hail
+	name:Hail
+	desc:It falls from the sky and knocks petals off the roses. After it falls, it evaporates quickly and goes back into the clouds to fall again.
+	on tick:yield 2 petals
+	cost:500 petals
+
+	*gt
+	name:Green thumb|Green thumbs
+	desc:It works in the garden and picks off rose petals!
+	on tick:yield 100 petals
+	cost:10000 petals
+
+	*drier|driers
+		name:Hair drier|Hair drier
+		desc:Blows petals off the rose!
+		cost:60000 petals, 10 drops
+		on tick:get 500 petals
+
+
+Upgrades
+	*wood
+		name:Wood
+		desc:Wood for your beetles to eat so they can eat petals 4 times faster.
+		passive:multiply petal yield of beetles by 4
+		cost:1000 petals
+		req:20 beetles
+
+	*dp
+		name:Diving plucker
+		desc:It goes into the ocean, and when it plucks one petal, it makes 9 petals from the ocean float to you.
+		passive:multiply petal yield of roseButton by 10
+		cost:5000 petals
+	*hh
+		name:Heavy hailer
+		desc:It makes the hail heavier, so the stones fall faster and knock off more petals.
+		passive:multiply petal yield of hail by 2
+		cost:5000 petal
+
+Shinies
+	*gwrose
+	name:Golden White Rose
+	frequency:10 seconds
+	frequency variation:5 seconds
+	icon:https://raw.githubusercontent.com/djohnson2718/rosepicker/main/pics/whiterosesmall.jpg
+	on click:	
+		$amount=max(7,random(petals:ps*60*3,petals:ps*60*5))
+		toast The Golden White Rose grants you<//><b>[$amount] petals</b>.
+		yield $amount petals
+		end
+
+	movement:anywhere
+
+	*dewdrop
+		name:Dewdrop
+		frequency:20 seconds
+		on click:yield 1 drop
+		movement:onThing:roseButton wiggle
+
+Achievements
+	*p1
+	name:A single petal
+	desc:Pluck your first petal.
+	req:1 petal
+
+	*p10
+	name:Isn't the stem spikey?
+	desc:Pick 10 petals.
+	req:10 petals
+
+	*p100
+	name:She loves me, she loves me not.
+	desc:Pick 100 petals.
+	req:100 petals
+
+	*p1000
+	name:Shouldn't your hand be cut off from all the spikey stems?
+	desc:Pick 1000 petals.
+	req:1000 petals
+
+	*d1
+	name:Do the dew
+	desc:Collect your first dew drop.
+	req:1 dewdrop
+
+	*blueRose
+	name:Acquire the azure rose!
+	req:10 beetles, 10 hail, 1000 petals
+	passive:show blueRoseButton
+
+	*b1
+	name:Are you sure your gonna like your first beetle?
+	desc:Get a beetle.
+	req:1 beetle
+
+	*h1
+	name:Gonna dry your hair?
+	desc:Get a hair dryer.
+	req:1 drier
+
+	*gt1
+	name:Novice gardener
+	desc:Have a green thumb.
+	req:1 gt
