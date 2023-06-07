@@ -1,5 +1,5 @@
 Let's make a game!
-	name:Rose Picker
+	name:Rose Picker!!
 
 Buttons
 	*roseButton
