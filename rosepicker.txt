@@ -1,9 +1,9 @@
 Let's make a game!
-	name:Rose Picker!!
+	name:Rose Picker!!!!
 
 Buttons
 	*roseButton
-		name:Pluck a petal!
+		name:Pluck a petal!!!
 		on click:yield 1 petal
 		icon:https://raw.githubusercontent.com/djohnson2718/rosepicker/main/pics/rose.jpg
 		class:bigButton hasFlares
